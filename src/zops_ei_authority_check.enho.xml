@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>HOOK_IMPL</TOOL>
+   <SHORTTEXT>Authorizaty check for company code</SHORTTEXT>
+   <ORIGINAL_OBJECT>
+    <PGMID>R3TR</PGMID>
+    <ORG_OBJ_TYPE>PROG</ORG_OBJ_TYPE>
+    <ORG_OBJ_NAME>SAPF0KC4</ORG_OBJ_NAME>
+    <ORG_MAIN_TYPE>PROG</ORG_MAIN_TYPE>
+    <ORG_MAIN_NAME>SAPF0KC4</ORG_MAIN_NAME>
+    <PROGRAMNAME>SAPF0KC4</PROGRAMNAME>
+   </ORIGINAL_OBJECT>
+   <ENHANCEMENTS>
+    <ENH_HOOK_IMPL>
+     <PROGRAMNAME>SAPF0KC4</PROGRAMNAME>
+     <EXTID>1</EXTID>
+     <ID>1</ID>
+     <ENHMODE>D</ENHMODE>
+     <FULL_NAME>\PR:SAPF0KC4\FO:E04_DELETE_DEPENDANT_ENTRIES\SE:BEGIN\EI</FULL_NAME>
+     <SOURCE>
+      <item>*This enahancement is to add a check for company code authoriization</item>
+      <item>DATA: lv_vim_abort_saving TYPE char1.</item>
+      <item>CONSTANTS: lc_tcode TYPE char11 VALUE &apos;SM34&apos;,</item>
+      <item>lc_update TYPE xfeld VALUE &apos;U&apos;.</item>
+      <item/>
+      <item>IF sy-tcode = lc_tcode.</item>
+      <item/>
+      <item>LOOP AT &lt;v_tka3a_total&gt; INTO tka3a_total .</item>
+      <item>IF tka3a_total-action EQ lc_update.</item>
+      <item/>
+      <item>CALL METHOD zcl_ops_mass_site_creation=&gt;authority_check</item>
+      <item>EXPORTING</item>
+      <item>iv_bukrs            = tka3a_total-bukrs</item>
+      <item>IMPORTING</item>
+      <item>ev_vim_abort_saving = lv_vim_abort_saving.</item>
+      <item>IF lv_vim_abort_saving IS NOT INITIAL.</item>
+      <item>EXIT.</item>
+      <item>ENDIF.</item>
+      <item>ENDIF.</item>
+      <item>ENDLOOP.</item>
+      <item>IF lv_vim_abort_saving IS NOT INITIAL.</item>
+      <item>MESSAGE s049(zops) WITH tka3a_total-bukrs DISPLAY LIKE zcl_cm_constants=&gt;gc_msgty_e.</item>
+      <item>sy-subrc = 4.</item>
+      <item>LEAVE TO CURRENT TRANSACTION.</item>
+      <item>ENDIF.</item>
+      <item>ENDIF.</item>
+     </SOURCE>
+    </ENH_HOOK_IMPL>
+   </ENHANCEMENTS>
+   <SPACES>
+    <item>
+     <FULL_NAME>\PR:SAPF0KC4\FO:E04_DELETE_DEPENDANT_ENTRIES\SE:BEGIN\EI</FULL_NAME>
+     <SPACES>
+      <item>0</item>
+      <item>0</item>
+      <item>0</item>
+      <item>11</item>
+      <item>0</item>
+      <item>0</item>
+      <item>0</item>
+      <item>2</item>
+      <item>4</item>
+      <item>0</item>
+      <item>4</item>
+      <item>6</item>
+      <item>8</item>
+      <item>6</item>
+      <item>8</item>
+      <item>4</item>
+      <item>6</item>
+      <item>4</item>
+      <item>4</item>
+      <item>2</item>
+      <item>2</item>
+      <item>4</item>
+      <item>4</item>
+      <item>4</item>
+      <item>2</item>
+      <item>0</item>
+     </SPACES>
+    </item>
+   </SPACES>
+  </asx:values>
+ </asx:abap>
+</abapGit>
