@@ -4,9 +4,7 @@
   <asx:values>
    <PROGDIR>
     <NAME>LZOPSFG_MAT_LEDGRF01</NAME>
-    <STATE>A</STATE>
     <SQLX>X</SQLX>
-    <VARCL>X</VARCL>
     <SUBC>I</SUBC>
     <APPL>S</APPL>
     <RLOAD>E</RLOAD>

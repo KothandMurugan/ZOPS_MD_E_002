@@ -4,7 +4,6 @@
   <asx:values>
    <VSEOCLASS>
     <CLSNAME>ZCL_OPS_MASS_SITE_RELATIONSHIP</CLSNAME>
-    <VERSION>1</VERSION>
     <LANGU>E</LANGU>
     <DESCRIPT>Class for Mass Site: BP Relationship Create &amp; Delete</DESCRIPT>
     <STATE>1</STATE>
